@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Unlock Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+    .container {
+      padding: 20px;
+    }
+    .highlight {
+      color: #ffe600;
+      font-size: 22px;
+      margin-bottom: 10px;
+      text-shadow: 0 0 5px #00f7ff;
+    }
+    .photo-box {
+      background: #222;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+    .photo-box img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .btn {
+      background-color: #2196F3;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+    .btn[disabled] {
+      background: gray;
+      cursor: not-allowed;
+    }
+    .loader {
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #2196F3;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      margin-left: 10px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .telegram-btn {
+      background-color: #0088cc;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      display: inline-flex;
+      align-items: center;
+      font-size: 18px;
+      text-decoration: none;
+      margin-top: 20px;
+    }
+    .telegram-btn img {
+      height: 30px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+<div class="container" id="main"></div>
+
+<script>
+  // এখানে তুমি ছবি আর ভিডিওর লিংক সেট করো
+  const photoLink = "https://example.com/photo.jpg";
+  const videoLink = "https://example.com/video.mp4";
+
+  const main = document.getElementById("main");
+  let step = 1;
+
+  function loadStep1() {
+    main.innerHTML = `
+    <script type='text/javascript' src='//pl26368134.profitableratecpm.com/2e/20/fa/2e20fa50540c3f1d8fba3c73e0c941c2.js'></script>
+      <div class="photo-box">
+        <img src="https://via.placeholder.com/300x200.png?text=Your+Thumbnail" />
+       <div class="highlight">ভিডিও দেখতে হলে Next চাপুন</div>
+      </div>
+    
+      <button class="btn" id="next1" disabled>
+        Next <span class="loader" id="loader1"></span>
+      </button>
+      <br>
+      <a class="telegram-btn" href="https://t.me/SafiRahman5" target="_blank">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram"> Move max Join on Telegram now
+      </a>
+    `;
+    setTimeout(() => {
+      document.getElementById("next1").disabled = false;
+      document.getElementById("loader1").style.display = 'none';
+      document.getElementById("next1").onclick = () => {
+        step = 2;
+        loadStep2();
+      };
+    }, 5000);
+  }
+
+  function loadStep2() {
+    let adClicked = false;
+    main.innerHTML = `
+      <div class="highlight">একটি এড ক্লিক করুন ভিডিও আনলক করতে</div>
+      <div class="photo-box"><img src="${photoLink}" /></div>
+      <button class="btn" id="next2" disabled>
+        Next <span class="loader" id="loader2"></span>
+      </button>
+      <br><br>
+      <a class="telegram-btn" href="https://t.me/SafiRahman5" target="_blank">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram"> Move max Join on Telegram now
+      </a>
+    `;
+    document.body.addEventListener('click', () => {
+      if (!adClicked && step === 2) {
+        adClicked = true;
+        setTimeout(() => {
+          document.getElementById("next2").disabled = false;
+          document.getElementById("loader2").style.display = 'none';
+          document.getElementById("next2").onclick = () => {
+            step = 3;
+            loadStep3();
+          };
+        }, 3000);
+      }
+    });
+  }
+
+  function loadStep3() {
+    let shareCount = 0;
+    main.innerHTML = `
+      <div class="photo-box"><img src="${photoLink}" /></div>
+      <div class="highlight">৩ বার শেয়ার করুন ভিডিও আনলক করতে</div>
+      <button class="btn" onclick="share()">শেয়ার করুন</button>
+      <button class="btn" id="watchBtn" disabled>
+        ভিডিও দেখুন <span class="loader" id="loader3"></span>
+      </button>
+      <br><br>
+      <a class="telegram-btn" href="https://t.me/SafiRahman5" target="_blank">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram"> Move max Join on Telegram now
+      </a>
+    `;
+    window.share = function() {
+      shareCount++;
+      window.open("https://example.com/share-link", "_blank");
+      if (shareCount >= 3) {
+        document.getElementById("watchBtn").disabled = false;
+        document.getElementById("loader3").style.display = 'none';
+        document.getElementById("watchBtn").onclick = () => {
+          window.location.href = videoLink;
+        };
+      }
+    }
+  }
+
+  // প্রথম ধাপ লোড করে দাও
+  loadStep1();
+</script>
+</body>
+</html>
