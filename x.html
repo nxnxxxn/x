@@ -1,0 +1,36 @@
+document.getElementById("next2").onclick = () => {
+            window.location.href = ?photo=${photo}&video=https://example.com/video.mp4;
+          };
+        }, 3000);
+      }
+    });
+  }
+  else {
+    let shareCount = 0;
+    main.innerHTML = 
+      <div class="photo-box"><img src="${photo}" /></div>
+      <div class="highlight">৩ বার শেয়ার করুন ভিডিও আনলক করতে</div>
+      <button class="btn" onclick="share()">শেয়ার করুন</button>
+      <button class="btn" id="watchBtn" disabled>
+        ভিডিও দেখুন <span class="loader" id="loader3"></span>
+      </button>
+      <br><br>
+      <a class="telegram-btn" href="https://t.me/SafiRahman5" target="_blank">
+        <img src="https://telegram.org/img/t_logo.png" alt="Telegram"> Move max Join on Telegram now
+      </a>
+    ;
+    window.share = function() {
+      shareCount++;
+      window.open("https://example.com/share-link", "_blank");
+      if (shareCount >= 3) {
+        document.getElementById("watchBtn").disabled = false;
+        document.getElementById("loader3").style.display = 'none';
+        document.getElementById("watchBtn").onclick = () => {
+          window.location.href = video;
+        };
+      }
+    }
+  }
+</script>
+</body>
+</html>
